@@ -1,9 +1,10 @@
 {
   "name": "missoula_map_website",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "netlify_server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node netlify_server.js",
+    "dev": "NODE_ENV=development node netlify_server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,9 +15,7 @@
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "fs-extra": "^10.0.0"
-  },
-  "engines": {
-    "node": "14.x"
+    "fs-extra": "^10.0.0",
+    "serverless-http": "^3.1.1"
   }
 }
