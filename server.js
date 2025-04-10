@@ -3,7 +3,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs-extra');
 const path = require('path');
-const serverless = require('serverless-http') ;
+const serverless = require('serverless-http');
 
 const app = express();
 const router = express.Router();
@@ -27,7 +27,19 @@ const initializeDatabase = async () => {
           id: 1,
           name: "University of Montana",
           location: [46.8619, -113.9847],
-          description: "Just an FYI"
+          description: "Home of the Grizzlies!"
+        },
+        {
+          id: 2,
+          name: "Caras Park",
+          location: [46.8701, -113.9957],
+          description: "Riverside park with events and a carousel"
+        },
+        {
+          id: 3,
+          name: "Mount Sentinel",
+          location: [46.8574, -113.9776],
+          description: "Hike to the M for great views!"
         }
       ];
       await fs.writeJson(DB_FILE, { pins: initialPins });

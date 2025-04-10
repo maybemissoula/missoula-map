@@ -69,11 +69,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fallback to load default pins if server is not available
     function loadDefaultPins() {
         const defaultPins = [
-          {
-            name: "Caras Park",
-            location: [46.8701, -113.9957],
-            description: "Not the greatest parking lot, but no major issues here."
-        }
+            {
+                name: "University of Montana",
+                location: [46.8619, -113.9847],
+                description: "Home of the Grizzlies!"
+            },
+            {
+                name: "Caras Park",
+                location: [46.8701, -113.9957],
+                description: "Riverside park with events and a carousel"
+            },
+            {
+                name: "Mount Sentinel",
+                location: [46.8574, -113.9776],
+                description: "Hike to the M for great views!"
+            }
         ];
         
         defaultPins.forEach(pin => {
