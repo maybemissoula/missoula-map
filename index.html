@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Missoula Interactive Map - 90s Style!</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="map-style.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="marquee">
+                <marquee scrollamount="3" behavior="alternate">Help Improve Our Streets ✏️ Submit Your Chaos</marquee>
+            </div>
+            <h1>UNCONTROLLED MISSOULA</h1>
+        </header>
+
+
+
+        <main>
+            <div class="sidebar">
+                <p>Click on the map to mark your favorite locations in Missoula!</p>
+                <div class="instructions">
+                    <ol>
+                        <li>Click anywhere on the map</li>
+                        <li>Enter a name for your location</li>
+                        <li>Add a description (optional)</li>
+                        <li>Click "Save Pin" to mark it!</li>
+                    </ol>
+                    <button id="save-pin">SAVE PIN</button>
+                    <button id="cancel-pin">CANCEL</button>
+                </div>
+                <div class="pin-form" id="pin-form">
+                    <h3>New Pin Details</h3>
+                    <input type="text" id="pin-name" placeholder="Location Name">
+                    <textarea id="pin-description" placeholder="Description"></textarea>
+                </div>
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            <div class="full-width-pins">
+                <h3>Your Saved Submissions</h3>
+                <div id="pins-list">
+                    <!-- Pins will be listed here -->
+                </div>
+            </div>
+
+        </main>
+
+        <footer>
+            <div class="counter">
+                <span>Visitor #</span>
+                <span class="counter-number">00001</span>
+            </div>
+            <p>All Rights Reserved © 2025 / a Maybe Missoula project</p>
+        </footer>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
