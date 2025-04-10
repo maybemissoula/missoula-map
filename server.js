@@ -12,8 +12,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(__dirname));
 
-// Database file path
-const DB_FILE = path.join(__dirname, 'pins.json');
+// Database file path - use /tmp for Netlify Functions
+const DB_FILE = path.join('/tmp', 'pins.json');
 
 // Initialize database if it doesn't exist
 const initializeDatabase = async () => {
