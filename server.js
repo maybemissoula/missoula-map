@@ -26,19 +26,7 @@ const initializeDatabase = async () => {
           id: 1,
           name: "University of Montana",
           location: [46.8619, -113.9847],
-          description: "Home of the Grizzlies!"
-        },
-        {
-          id: 2,
-          name: "Caras Park",
-          location: [46.8701, -113.9957],
-          description: "Riverside park with events and a carousel"
-        },
-        {
-          id: 3,
-          name: "Mount Sentinel",
-          location: [46.8574, -113.9776],
-          description: "Hike to the M for great views!"
+          description: "Just a pin example"
         }
       ];
       await fs.writeJson(DB_FILE, { pins: initialPins });
