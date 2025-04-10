@@ -3,9 +3,10 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const fs = require('fs-extra');
 const path = require('path');
+const serverless = require('serverless-http') ;
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const router = express.Router();
 
 // Middleware
 app.use(cors());
@@ -26,7 +27,7 @@ const initializeDatabase = async () => {
           id: 1,
           name: "University of Montana",
           location: [46.8619, -113.9847],
-          description: "Just a pin example"
+          description: "Just an FYI"
         }
       ];
       await fs.writeJson(DB_FILE, { pins: initialPins });
@@ -40,8 +41,9 @@ const initializeDatabase = async () => {
 // API Routes
 
 // Get all pins
-app.get('/api/pins', async (req, res) => {
+router.get('/pins', async (req, res) => {
   try {
+    await initializeDatabase(); // Ensure DB exists on each request
     const data = await fs.readJson(DB_FILE);
     res.json(data.pins);
   } catch (err) {
@@ -51,7 +53,7 @@ app.get('/api/pins', async (req, res) => {
 });
 
 // Add a new pin
-app.post('/api/pins', async (req, res) => {
+router.post('/pins', async (req, res) => {
   try {
     const { name, location, description } = req.body;
     
@@ -59,6 +61,7 @@ app.post('/api/pins', async (req, res) => {
       return res.status(400).json({ error: 'Name and location are required' });
     }
     
+    await initializeDatabase(); // Ensure DB exists
     const data = await fs.readJson(DB_FILE);
     
     // Generate a new ID
@@ -84,9 +87,11 @@ app.post('/api/pins', async (req, res) => {
 });
 
 // Delete a pin
-app.delete('/api/pins/:id', async (req, res) => {
+router.delete('/pins/:id', async (req, res) => {
   try {
     const pinId = parseInt(req.params.id);
+    
+    await initializeDatabase(); // Ensure DB exists
     const data = await fs.readJson(DB_FILE);
     
     const pinIndex = data.pins.findIndex(pin => pin.id === pinId);
@@ -105,9 +110,18 @@ app.delete('/api/pins/:id', async (req, res) => {
   }
 });
 
-// Start server
-initializeDatabase().then(() => {
+app.use('/api', router);
+
+// For local testing
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3000;
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
-});
+}
+
+// Initialize database on startup
+initializeDatabase();
+
+// Export for Netlify Functions
+module.exports.handler = serverless(app);
