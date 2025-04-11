@@ -70,19 +70,9 @@ document.addEventListener('DOMContentLoaded', function() {
     function loadDefaultPins() {
         const defaultPins = [
             {
-                name: "University of Montana",
-                location: [46.8619, -113.9847],
-                description: "Home of the Grizzlies!"
-            },
-            {
                 name: "Caras Park",
                 location: [46.8701, -113.9957],
-                description: "Riverside park with events and a carousel"
-            },
-            {
-                name: "Mount Sentinel",
-                location: [46.8574, -113.9776],
-                description: "Hike to the M for great views!"
+                description: "Not an intersection, but funky lot layout."
             }
         ];
         
