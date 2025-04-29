@@ -7,5 +7,5 @@
 
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/netlify_server/:splat"
+  to = "/.netlify/functions/firebase_server/:splat"
   status = 200
