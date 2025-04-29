@@ -1,7 +1,7 @@
 // Missoula Interactive Map - 90s Style!
 document.addEventListener('DOMContentLoaded', function() {
     // API endpoints - use the deployed server URL
-    const API_URL = 'https://3000-ihcqd4jkg4srxd5thpdtx-8bb4aa19.manus.computer/api';
+    const API_URL = 'https://uncontrolled-missoula-default-rtdb.firebaseio.com/';
     
     // Missoula, MT coordinates
     const missoula = [46.8721, -113.9940];
